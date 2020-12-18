@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.smoothstack.uthopiaairlines.model.Airport;
+import com.smoothstack.uthopiaairlines.entity.Airport;
 import com.smoothstack.uthopiaairlines.util.DatabaseConnecter;
 
 

@@ -1,14 +1,13 @@
-package com.smoothstack.uthopiaairlines;
+package com.smoothstack.project.utopiaairlines;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UthopiaairlinesApplication {
+public class UtopiaAirlinesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UthopiaairlinesApplication.class, args);
+		SpringApplication.run(UtopiaAirlinesApplication.class, args);
 	}
-	
 
 }

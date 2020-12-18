@@ -1,5 +1,10 @@
-package com.smoothstack.uthopiaairlines.model;
+package com.smoothstack.uthopiaairlines.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "airports")
 public class Airport {
 	private String id;
 	private String city;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 import com.smoothstack.uthopiaairlines.dao.AirportDao;
-import com.smoothstack.uthopiaairlines.model.Airport;
+import com.smoothstack.uthopiaairlines.entity.Airport;
 
 @Component
 public class AirportService {
