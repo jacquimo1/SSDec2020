@@ -27,7 +27,7 @@ public class AirportController {
 		
 		@GetMapping("/api/airports")
 		public List<Airport> getAllAirports() {
-		    return airportDao.getAllAirports();
+		    return airportDao.findAllAirports();
 		}
 		
 
