@@ -15,19 +15,18 @@ import com.smoothstack.project.utopiaairlines.entity.Airport;
 import com.smoothstack.project.utopiaairlines.service.AirportService;
 
 @RestController
-@RequestMapping("/api/airports")
 public class AirportController {
 		
 		@Autowired
-		AirportService airportService;
+		private AirportService airportService;
 		
 		@GetMapping("/api/airports")
 		public List<Airport> findAll() {
 		    return airportService.findAll();
 		}
 		
-		@RequestMapping(path = "api/airports/{id}", method = RequestMethod.GET)
-		public Airport findById(@PathVariable String airportId) {
-			return airportService.findById(airportId);
+		@RequestMapping(path = "/api/airports/{id}", method = RequestMethod.GET)
+		public Airport findById(@PathVariable String id) {
+			return airportService.findById(id);
 		}
 }

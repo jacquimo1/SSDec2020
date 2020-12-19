@@ -13,7 +13,8 @@ import com.smoothstack.project.utopiaairlines.entity.Airport;
 public class AirportService {
 	
 	@Autowired
-	AirportDao airportDao;
+	private AirportDao airportDao;
+	
 	public Airport findById(String id) {
 		return airportDao.findById(id);
 	}
