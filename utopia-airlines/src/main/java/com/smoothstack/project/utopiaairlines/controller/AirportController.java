@@ -25,8 +25,13 @@ public class AirportController {
 		    return airportService.findAll();
 		}
 		
-		@RequestMapping(path = "/api/airports/{id}", method = RequestMethod.GET)
+		@RequestMapping(path = "/api/airports/id/{id}", method = RequestMethod.GET)
 		public Airport findById(@PathVariable String id) {
 			return airportService.findById(id);
+		}
+		
+		@RequestMapping(path = "/api/airports/city/{city}", method = RequestMethod.GET)
+		public List<Airport> findByCity(@PathVariable String city) {
+			return airportService.findByCity(city);
 		}
 }

@@ -19,7 +19,10 @@ public class AirportService {
 		return airportDao.findById(id);
 	}
 	
-	@Autowired
+	public List<Airport> findByCity(String city) {
+		return airportDao.findByCity(city);
+	}
+
 	public List<Airport> findAll() {
 		return airportDao.findAll();
 	}
