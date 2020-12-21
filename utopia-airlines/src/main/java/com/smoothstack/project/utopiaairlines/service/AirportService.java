@@ -27,4 +27,11 @@ public class AirportService {
 		return airportDao.findAll();
 	}
 	
+	public Airport saveAirport(Airport airport) {
+		return airportDao.save(airport);
+	}
+	
+	public void delete(Airport airport) {
+		airportDao.delete(airport);
+	}
 }

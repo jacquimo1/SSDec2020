@@ -13,4 +13,5 @@ public interface AirportDao extends JpaRepository<Airport, Long> {
 	Airport findById(String id);
 	List<Airport> findByCity(String city);
 	List<Airport> findAll();
+	void delete(Airport airport);
 }
