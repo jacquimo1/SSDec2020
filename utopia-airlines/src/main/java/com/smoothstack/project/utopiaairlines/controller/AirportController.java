@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -28,9 +29,14 @@ public class AirportController {
 		private AirportService airportService;
 		
 		@GetMapping
-		public ResponseEntity<List<Airport>> findAll() {
+		public ResponseEntity<List<Airport>> findAll(@RequestParam(value = "city", required = false) String city) {
 			try {
-				return new ResponseEntity<List<Airport>>(airportService.findAll(),  HttpStatus.OK);
+				if (city == null) {
+					return new ResponseEntity<List<Airport>>(airportService.findAll(),  HttpStatus.OK);
+				}
+				else {
+					return new ResponseEntity<List<Airport>>(airportService.findByCity(city), HttpStatus.OK);
+				}
 			
 	        } catch (Exception e) {
 	            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -52,16 +58,6 @@ public class AirportController {
 	            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
 			
-		}
-		
-		@RequestMapping(path = "/city/{city}", method = RequestMethod.GET)
-		public ResponseEntity<List<Airport>> findByCity(@PathVariable String city) {
-			try {
-				return new ResponseEntity<List<Airport>>(airportService.findByCity(city), HttpStatus.OK);
-			}
-			catch (Exception e) {
-				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
-	        }
 		}
 		
 		@PostMapping
