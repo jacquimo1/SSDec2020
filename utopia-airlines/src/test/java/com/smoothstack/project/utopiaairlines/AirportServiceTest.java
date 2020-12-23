@@ -36,9 +36,11 @@ public class AirportServiceTest {
 		Airport a2 = new Airport();
 		a2.setId("JFK");
 		a2.setCity("New York");
+		expected.add(a1);
+		expected.add(a2);
 		when(airportDao.findAll()).thenReturn(expected);
 		List<Airport> testList = airportService.findAll();
-		assertEquals(testList.get(0).getId(), expected.get(0).getId()); // Assert equals to list?
+		assertEquals(testList.size(), 2);
 		verify(airportDao, times(1)).findAll(); 
 	}
 	
@@ -51,7 +53,6 @@ public class AirportServiceTest {
 		when(airportDao.findById(id)).thenReturn(expected);
 		Airport test = airportService.findById(id);
 		assertEquals("Los Angeles", test.getCity());
-		
 	}
 	
 	@Test 
@@ -69,7 +70,6 @@ public class AirportServiceTest {
 		when(airportDao.findByCity(city)).thenReturn(expected);
 		List<Airport> test = airportService.findByCity(city);
 		assertEquals(test.get(0).getId(), expected.get(0).getId());
-		
 	}
 	
 	@Test
@@ -79,7 +79,6 @@ public class AirportServiceTest {
 		expected.setCity("Los Angeles");
 		airportService.saveAirport(expected);
 		verify(airportDao, times(1)).save(expected);
-		
 	}
 	
 }
