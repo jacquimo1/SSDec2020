@@ -1,6 +1,7 @@
 package com.smoothstack.project.utopiaairlines;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -9,17 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import com.smoothstack.project.utopiaairlines.dao.AirportDao;
 import com.smoothstack.project.utopiaairlines.entity.Airport;
 import com.smoothstack.project.utopiaairlines.service.AirportService;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AirportServiceTest {
+		
 	
 	@InjectMocks
 	private AirportService airportService;
@@ -81,4 +80,13 @@ public class AirportServiceTest {
 		verify(airportDao, times(1)).save(expected);
 	}
 	
+	@Test
+	public void deleteAirportTest() {
+		Airport airport = new Airport();
+		airport.setId("LAX");
+		airport.setCity("Los Angeles");
+		doNothing().when(airportDao).delete(airport);
+		airportService.delete(airport);
+		verify(airportDao, times(1)).delete(airport);
+	}
 }
